@@ -1,0 +1,87 @@
+﻿<mah:MetroWindow x:Class="MetroBank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="MetroBank" Height="400" Width="600">
+    <Grid Margin="50,10,50,10">
+        <TabControl Style="{DynamicResource MahApps.Styles.TabControl.Animated}">
+            <!-- Overview -->
+            <TabItem Header="overview">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="Padding" Value="5,5,5,5"></Setter>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0">
+                        <DockPanel>
+                            <Button x:Name="DepositButton" Grid.Row="0" Margin="0,0,30,0" FontSize="20" Width="100"  Style="{DynamicResource MahApps.Styles.Button.Square}" Click="DepositButton_Click">deposit</Button>
+                            <TextBox x:Name="DepositBox" mah:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" FontSize="18" TextChanged="DepositBox_TextChanged"></TextBox>
+                        </DockPanel>
+                    </Border>
+
+                    <Border Grid.Row="1">
+                        <DockPanel>
+                            <Button x:Name="WithdrawButton" Grid.Row="1" Margin="0,0,30,0" FontSize="20" Width="100" Style="{DynamicResource MahApps.Styles.Button.Square}" Click="WithdrawButton_Click">withdraw</Button>
+                            <TextBox x:Name="WithdrawBox" mah:TextBoxHelper.ClearTextButton="True" VerticalContentAlignment="Center" FontSize="18" TextChanged="WithdrawBox_TextChanged"></TextBox>
+                        </DockPanel>
+                    </Border>
+
+                    <TextBlock Grid.Row="2" FontSize="50" Text="{Binding BalanceString}" Margin="0,0,0,-51"/>
+                    
+                    <mah:FlyoutsControl Grid.Row="2" Grid.ColumnSpan="3" Margin="0,156,0,-156">
+                        <mah:Flyout x:Name="DepositFlyout" Position="Bottom" Theme="Accent" Header="Deposit Successful" AutoCloseInterval="3000" IsAutoCloseEnabled="True"></mah:Flyout>
+                        <mah:Flyout x:Name="WithdrawFlyout" Position="Bottom" Theme="Accent" Header="Withdraw Successful" AutoCloseInterval="3000" IsAutoCloseEnabled="True"></mah:Flyout>
+                        <mah:Flyout x:Name="WithdrawBadFlyout" Position="Bottom" Background="#E03724" Foreground="White" Theme="Light" Header="Withdraw failed" AutoCloseInterval="3000" IsAutoCloseEnabled="True">
+                            <TextBlock VerticalAlignment="Center" FontSize="15">
+                                You tried to withdraw too much.
+                            </TextBlock>
+                        </mah:Flyout>
+                    </mah:FlyoutsControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="transfer">
+                <TextBlock FontSize="60">W.I.P</TextBlock>
+            </TabItem>
+
+            <TabItem Header="data">
+                <TextBlock FontSize="60">W.I.P</TextBlock>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</mah:MetroWindow>
+
+<!--
+                        <StackPanel Orientation="Horizontal" Height="80">
+    <Button x:Name="AddMoneyButton"
+                            Width="134" 
+                            Click="AddMoneyButton_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                            Margin="0,20">
+        Add Money
+    </Button>
+    <Button x:Name="RemoveMoneyButton"
+                            Width="134" 
+                            Click="RemoveMoneyButton_Click" 
+                            Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                            Margin="0,20">
+        Remove Money
+    </Button>
+    <TextBlock FontSize="48" Text="{Binding Balance}" />
+    </StackPanel>
+    -->
